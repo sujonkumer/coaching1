@@ -24,6 +24,13 @@ class RegisterController extends Controller
 
     use RegistersUsers;
 
+
+    public function showRegistrationForm()
+    {
+        return view('admin.users.registation-form');
+    //    return view('auth.register');
+    }
+
     /**
      * Where to redirect users after registration.
      *
@@ -52,7 +59,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'role' => ['required'],
             'name' => ['required', 'string', 'max:255'],
-            'phone' => ['required','min:11','max:13'],
+            'mobile' => ['required','min:11','max:13'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -69,7 +76,7 @@ class RegisterController extends Controller
         return User::create([
             'role' => $data['role'],
             'name' => $data['name'],
-            'phone' => $data['phone'],
+            'mobile' => $data['mobile'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
