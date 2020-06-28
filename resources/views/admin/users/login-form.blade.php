@@ -28,9 +28,9 @@
             <form action="{{ route('login') }}" method="post" enctype="multipart/form-data" autocomplete="off" class="form-inline">
                 @csrf
                 <div class="form-group col-12 mb-3">
-                    <label for="email" class="col-sm-3 col-form-label text-right">E-Mail Address</label>
-                    <input id="email" type="email" class="col-sm-9 form-control @error('email') is-invalid @enderror" name="email" value="" placeholder="Email Address" required autofocus>
-                    @error('email')
+                    <label for="mobile" class="col-sm-3 col-form-label text-right">Mobile Number</label>
+                    <input type="mobile" name="mobile"  id="mobile" class="col-sm-9 form-control @error('mobile') is-invalid @enderror" placeholder="Enter Mobile Number" required autofocus>
+                    @error('mobile')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>

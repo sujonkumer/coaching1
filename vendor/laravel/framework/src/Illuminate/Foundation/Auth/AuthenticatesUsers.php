@@ -5,6 +5,7 @@ namespace Illuminate\Foundation\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Hash;
 
 trait AuthenticatesUsers
 {
@@ -17,7 +18,21 @@ trait AuthenticatesUsers
      */
     public function showLoginForm()
     {
-        return view('admin.users.login-form');
+        $users = User::all();
+        if(count($users)>0){
+            return view('admin.users.login-form');
+        } else{
+            $user =  new User();
+            $user->role = 'Admin';
+            $user->name = 'Admin';
+            $user->mobile = '01785408231';
+            $user->email = 'admin@admin.com';
+            $user->password = Hash::make('12345678');
+            $user->save();
+
+            return view('admin.users.login-form');
+        }
+        
         //return view('auth.login');
     }
 
@@ -145,7 +160,8 @@ trait AuthenticatesUsers
      */
     public function username()
     {
-        return 'email';
+        //return 'email';
+        return 'mobile';
     }
 
     /**

@@ -1,29 +1,15 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Coaching | Registation Form</title>
-    <!--    Bootstrap-4.3 Stylesheet-->
-    <link rel="stylesheet" href="{{ asset('admin/assets/css/bootstrap.min.css')}}">
-    <!--    Theme Stylesheet-->
-    <link rel="stylesheet" href="{{ asset('admin/assets/css/style.css')}}">
-    <link rel="shortcut icon" href="{{asset('admin/assets/images/favicon.png')}} " type="image/x-icon">
-</head>
-<body>
-
+@extends('admin.master')
+@section('content')
 <!--Content Start-->
 <section class="container-fluid">
-    <div class="row content login-form">
+    <div class="row content registration-form">
         <div class="col-12 pl-0 pr-0">
             <div class="form-group">
                 <div class="col-sm-12">
                     <h4 class="text-center font-weight-bold font-italic mt-3">User Registration Form</h4>
                 </div>
             </div>
-            <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data" autocomplete="" class="form-inline">
+            <form method="POST" action="{{ route('user-save') }}" enctype="multipart/form-data" autocomplete="" class="form-inline">
             @csrf
             <div class="form-group col-12 mb-3">
                 <label for="role" class="col-sm-3 col-form-label text-right">Role</label>
@@ -79,7 +65,6 @@
                 <label for="password-confirm" class="col-sm-3 col-form-label text-right">Confirm Password</label>
                 <input id="password-confirm" type="password" class="col-sm-9 form-control" name="password_confirmation" placeholder="Confirm Password" required>
             </div>
-
             <div class="form-group col-12 mb-3">
                 <label class="col-sm-3"></label>
                 <button type="submit" class="col-sm-9 btn btn-block my-btn-submit">Submit</button>
@@ -89,5 +74,4 @@
     </div>
 </section>
 <!--Content End-->
-</body>
-</html>
+@endsection
