@@ -103,15 +103,15 @@ class UserRegistrationController extends Controller
         $file = $request->file('avatar');
         $imageName = $file->getClientOriginalName();
         $directory = 'admin/assets/avatar/';
-        $imageUrl = $directory.$imageName; 
+        $imageUrl = $directory.$imageName;
         $file->move($directory,$imageUrl);
-         
+
         $user->avatar = $imageUrl;
         $user->save();
         return redirect("/user-profile/$request->user_id");
-        
+
     }
 
-   
+
 
 }

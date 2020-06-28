@@ -24,6 +24,7 @@
             @csrf
             <div class="table-responsive p-1">
                 <table id="" class="table table-striped table-bordered dt-responsive nowrap text-center" style="width: 100%;">
+                    <input type="hidden" name="user_id" value="{{ $user->id }}">
                         <tr>
                             <td>
                                 <img src="{{ asset('admin/assets/images/avatar.png')}}" alt="" class="img-fluid" id="profile_photo" style="max-height:300px; max-width:400px;">
@@ -45,7 +46,6 @@
                         </tr>
                 </table>
             </div>
-            <input type="hiddne" name="user_id" value="{{ $user->id }}">
             </form>
         </div>
     </div>

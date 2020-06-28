@@ -40,7 +40,7 @@
 <!--Header End-->
 
 <!--User Avatar Start-->
-<img class="avatar" src="{{asset('admin/assets/images/avatar.png')}}" alt="Avatar">
+<img class="avatar" src=" @if (Auth::user()->avatar) {{ asset('/').'/'.$user->avatar }} @else {{asset('admin/assets/images/avatar.png')}} @endif " alt="Avatar">
 <!--User Avatar Start-->
 
 <!--Main Menu Start-->
@@ -98,7 +98,7 @@
                             <li><a href="#" class="dropdown-item">Batch List</a></li>
                         </ul>
                     </li>
-                   
+
                     <li class="dropdown-submenu">
                         <a class="dropdown-item dropdown-toggle" href="#">User</a>
                         <ul class="dropdown-menu">
@@ -109,7 +109,7 @@
                             <li><a href="{{ route('user-profile',['userId'=>Auth::user()->id])}}" class="dropdown-item">User Profile</a></li>
                         </ul>
                     </li>
-                   
+
                 </ul>
             </li>
         </ul>

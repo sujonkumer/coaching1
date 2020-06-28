@@ -27,8 +27,7 @@
                 <table id="" class="table table-striped table-bordered dt-responsive nowrap text-center" style="width: 100%;">
                         <tr>
                             <td colspan="2" >
-                                <img src=" @if(isset('$user->avatar')){{ asset('/').'/'.$user->avatar }} @else {{ asset('admin/assets/images/avatar.png') }} @endif " alt="Profile Image" class="img-fluid" style="width:100%;">
-                                
+                            <img src="{{ asset('/').'/'.$user->avatar }}" alt="Profile Image" class="img-fluid" style="width:400px; height: 400px;">
                             </td>
                         </tr>
                         <tr>
@@ -46,7 +45,7 @@
                         <tr>
                             <th>Email</th>
                             <td>{{ $user->email }}</td>
-                        </tr> 
+                        </tr>
                         <tr>
                             <th>Action</th>
                             <td>
