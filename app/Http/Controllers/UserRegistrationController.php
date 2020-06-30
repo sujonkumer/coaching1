@@ -98,6 +98,7 @@ class UserRegistrationController extends Controller
         return view('admin.users.change-user-avatar',['user'=>$user]);
     }
 
+
     public function updateUserPhoto(Request $request){
         $user = User::find($request->user_id);
         $file = $request->file('avatar');
