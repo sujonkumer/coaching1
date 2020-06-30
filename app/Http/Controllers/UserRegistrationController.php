@@ -106,10 +106,34 @@ class UserRegistrationController extends Controller
         $directory = 'admin/assets/avatar/';
         $imageUrl = $directory.$imageName;
         $file->move($directory,$imageUrl);
-
+        //Image::make($file)->resize(300,300)->save($imageUrl);
         $user->avatar = $imageUrl;
         $user->save();
         return redirect("/user-profile/$request->user_id");
+
+    }
+
+    public function changeUserPassword($id){
+        $user = User::find($id);
+        return view('admin.users.change-user-password',['user'=>$user]);
+
+    }
+
+    public function userPasswordUpdate(Request $request){
+
+        $request->validate([
+            'new_password' => 'required', 'string', 'min:8'
+        ]);
+
+        $oldPassword = $request->password;
+        $user = User::find($request->user_id);
+        if(Hash::check($oldPassword,$user->password)){
+            $user->password = Hash::make($request->new_password);
+            $user->save();
+            return redirect("/user-profile/$request->user_id")->with('message','User Password Updated Successfull.');
+        } else{
+            return back()->with('error_message','Ole Password Dose Not Match. Please Try Again.');
+        }
 
     }
 

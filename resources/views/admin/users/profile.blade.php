@@ -6,16 +6,22 @@
         <div class="col-md-8 offset-md-2 pl-0 pr-0">
 
         @if(Session::get('message'))
-
             <div class="alert alert-success alert-dismissible fade show" role="alert">
             <strong>Message : </strong> {{Session::get('message')}}
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
             </div>
-
         @endif
 
+        @if(Session::get('error_message'))
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Error : </strong> {{Session::get('error_message')}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+        @endif
 
 
             <div class="form-group">
@@ -51,7 +57,7 @@
                             <td>
                                 <a href="{{ route('change-user-info',['id'=>$user->id])}}" class="btn btn-sm btn-dark">Change Info</a>
                                 <a href="{{ route('change-profile-avatar',['id'=>$user->id])}}" class="btn btn-sm btn-info">Change Photo</span></a>
-                                <a href="#" class="btn btn-sm btn-danger">Change Password</span></a>
+                                <a href="{{ route('change-user-password',['id'=>$user->id])}} " class="btn btn-sm btn-danger">Change Password</span></a>
                             </td>
                         </tr>
                 </table>

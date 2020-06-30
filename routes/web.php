@@ -40,7 +40,7 @@ Route::get('/user-profile/{userId}',[
 Route::get('/change-user-info/{id}',[
     'uses' => 'UserRegistrationController@changeUserInfo',
     'as' => 'change-user-info'
-])->middleware('auth'); 
+])->middleware('auth');
 
 Route::post('/user-info-update',[
     'uses' => 'UserRegistrationController@userInfoUpdate',
@@ -55,6 +55,16 @@ Route::get('/change-profile-avatar/{id}',[
 Route::post('/update-user-photo',[
     'uses' => 'UserRegistrationController@updateUserPhoto',
     'as' => 'update-user-photo'
+])->middleware('auth');
+
+Route::get('/change-user-password/{id}',[
+    'uses' => 'UserRegistrationController@changeUserPassword',
+    'as' => 'change-user-password'
+])->middleware('auth');
+
+Route::post('/user-password-update',[
+    'uses' => 'UserRegistrationController@userPasswordUpdate',
+    'as' => 'user-password-update'
 ])->middleware('auth');
 
 
