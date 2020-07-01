@@ -20,9 +20,7 @@
                 </div>
             </div>
             <form method="POST" action="{{ route('user-password-update') }}" enctype="multipart/form-data" autocomplete="" class="form-inline">
-            @csrf
-            <input type="hidden" id="user_id" value="{{ $user->id }}">
-
+            @csrf 
             <div class="form-group col-12 mb-3">
                 <label for="password" class="col-sm-3 col-form-label text-right">Old Password</label>
                 <input id="password" type="password" class="col-sm-9 form-control @error('password') is-invalid @enderror" name="password" placeholder="Old Password" required>
@@ -42,11 +40,14 @@
                     </span>
                 @enderror
             </div>
+            
             <div class="form-group col-12 mb-3">
                 <label class="col-sm-3"></label>
                 <button type="submit" class="col-sm-9 btn btn-block my-btn-submit">Submit</button>
             </div>
+            {{-- <input type="text" name="user_id" value="1"> --}}
             </form>
+
         </div>
     </div>
 </section>
