@@ -114,7 +114,7 @@ class UserRegistrationController extends Controller
     }
 
     public function changeUserPassword($id){
-     
+
         return view('admin.users.change-user-password');
 
     }
@@ -126,10 +126,10 @@ class UserRegistrationController extends Controller
         ]);
 
         $oldPassword = $request->password;
-          $user_id =  Auth::user()->id;  
+          $user_id =  Auth::user()->id;
           $user = User::find($user_id);
-         
-        if(Hash::check($oldPassword,$user->password)){ 
+
+        if(Hash::check($oldPassword,$user->password)){
             $user->password = Hash::make($request->new_password);
             $user->save();
             return redirect("/user-profile/$user_id")->with('message','User Password Updated Successfull.');
