@@ -32,7 +32,7 @@ trait AuthenticatesUsers
 
             return view('admin.users.login-form');
         }
-        
+
         //return view('auth.login');
     }
 
@@ -160,8 +160,8 @@ trait AuthenticatesUsers
      */
     public function username()
     {
-        //return 'email';
-        return 'mobile';
+        return 'email';
+        //return 'mobile';
     }
 
     /**
@@ -178,7 +178,7 @@ trait AuthenticatesUsers
 
         $request->session()->regenerateToken();
 
-        return $this->loggedOut($request) ?: redirect('/home');
+        return $this->loggedOut($request) ?: redirect('/');
     }
 
     /**
