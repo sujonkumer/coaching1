@@ -30,12 +30,22 @@
 <body>
 <!--Header Start-->
 <section>
-    <div class="col-sm-12 text-center header pb-1">
-        <h2 class="font-weight-bold p-1 m-0">Web Site Title</h2>
-        <h5 class="menu-bg p-2 pl-3 pr-3 mb-1">Web Sub Title</h5>
-        <p class="font-weight-bold mb-0">215/4/A/3, East-Rampura, Dhaka-1209</p>
-        <p class="font-weight-bold mb-0">Mobile: 880-1722454519</p>
-    </div>
+    @if(isset($header))
+        <div class="col-sm-12 text-center header pb-1">
+        <h2 class="font-weight-bold p-1 m-0">{{ $header->ownarName }}</h2>
+        <h5 class="menu-bg p-2 pl-3 pr-3 mb-1">{{ $header->ownerDepartment }}</h5>
+        <p class="font-weight-bold mb-0">{{ $header->address }}</p>
+        <p class="font-weight-bold mb-0">{{ $header->mobile }}</p>
+        </div>
+    @else
+        <div class="col-sm-12 text-center header pb-1">
+            <h2 class="font-weight-bold p-1 m-0">Web Site Title</h2>
+            <h5 class="menu-bg p-2 pl-3 pr-3 mb-1">Web Sub Title</h5>
+            <p class="font-weight-bold mb-0">Address Here</p>
+            <p class="font-weight-bold mb-0">Mobile: 88017...</p>
+        </div>
+    @endif
+
 </section>
 <!--Header End-->
 
@@ -102,6 +112,14 @@
                     </li>
 
                     <li class="dropdown-submenu">
+                        <a class="dropdown-item dropdown-toggle" href="#">Generale</a>
+                        <ul class="dropdown-menu">
+                        <li><a href="{{ route('add-header-footer')}}" class="dropdown-item">Add Header & Footer</a></li>
+                            <li><a href="#" class="dropdown-item">Batch </a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown-submenu">
                         <a class="dropdown-item dropdown-toggle" href="#">User</a>
                         <ul class="dropdown-menu">
                         @if(Auth::user()->role=='Admin')
@@ -134,3 +152,22 @@
     </div>
 </nav>
 <!--Main Menu End-->
+
+@if(Session::get('message'))
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+<strong>Message : </strong> {{Session::get('message')}}
+<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+</button>
+</div>
+@endif
+
+@if(Session::get('error_message'))
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+<strong>Error : </strong> {{Session::get('error_message')}}
+<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+</button>
+</div>
+@endif
+

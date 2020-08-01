@@ -2,10 +2,17 @@
 <!--Footer Start-->
 <footer class="container-fluid">
     <div class="row footer">
-        <div class="col-12">
-            <p class="pt-2 mb-2 text-center">Copyright &copy; <a class="footer-link" href="">Owner</a> || Developed  by:
-                <a class="footer-link" href="http://www.fzitsolution.net">FZIT Solution</a></p>
-        </div>
+        @if(isset($footer))
+            <div class="col-12">
+            <p class="pt-2 mb-2 text-center">Copyright &copy; <a class="footer-link" href="https://www.facebook.com/sujonsorkar01">{{$footer->copyright }}</a> || Developed  by:
+                    <a class="footer-link" href="https://www.facebook.com/sujonsorkar01">Sujon Kumer</a></p>
+            </div>
+        @else
+            <div class="col-12">
+                <p class="pt-2 mb-2 text-center">Copyright &copy; <a class="footer-link" href="">Owner</a> || Developed  by:
+                    <a class="footer-link"  href="https://www.facebook.com/sujonsorkar01">Test</a></p>
+            </div>
+        @endif
     </div>
 </footer>
 <!--Footer End-->

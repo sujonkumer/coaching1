@@ -67,6 +67,18 @@ Route::post('/user-password-update',[
     'as' => 'user-password-update'
 ])->middleware('auth');
 
+//general section
+Route::get('/add-header-footer',[
+    'uses' => 'HomePageController@addHeadreFooter',
+    'as' => 'add-header-footer'
+])->middleware('auth');
+
+Route::post('/header-and-footer-save',[
+    'uses' => 'HomePageController@headerAndFooterSave',
+    'as' => 'header-and-footer-save'
+])->middleware('auth');
+
+
 
 Auth::routes(['register' => false]);
 Route::get('/home', 'HomeController@index')->name('home');

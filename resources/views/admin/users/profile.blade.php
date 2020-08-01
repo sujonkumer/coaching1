@@ -67,3 +67,23 @@
 </section>
 <!--Content End-->
 @endsection
+
+@section('js')
+	<script type="text/javascript">
+		$(document).ready(function() {
+            //alert time out function
+            setTimeout(function() {
+            $(".alert").alert('close');
+            }, 7000);
+
+            // function showAlert(){
+            //     $('.alert').show();
+            //     setTimeout(function() {
+            //         $('.alert').hide();
+            //     }, 5000);
+            // }
+		});
+	</script>
+	@endsection
+
+
